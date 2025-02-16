@@ -3,7 +3,8 @@ const http = require("http");
 const socketIo = require("socket.io");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const inventoryRoutes = require("./routes/inventory"); // Ensure this is the correct path
+const inventoryRoutes = require("./routes/inventory");
+const queueRoutes = require("./routes/queue");
 require("dotenv").config();
 
 const app = express();
@@ -24,6 +25,7 @@ app.get("/", (req, res) => {
   res.send("Inventory Management API");
 });
 app.use("/api/inventory", inventoryRoutes);
+app.use("/api/queue", queueRoutes);
 
 // WebSocket Connection
 io.on("connection", (socket) => {
