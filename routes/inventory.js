@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
 
     const items = await Inventory.find()
       .skip((pageNumber - 1) * limitNumber) // Skip previous pages
-      .limit(limitNumber); // Get only 'limit' items
+      .limit(limitNumber);
 
     const totalItems = await Inventory.countDocuments(); // Total count of items
 
